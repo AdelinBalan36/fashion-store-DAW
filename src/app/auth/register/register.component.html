@@ -1,0 +1,153 @@
+  <app-header1></app-header1>
+  <br><br><br><br>
+  <br><br>
+  <div class="content">
+
+  <div id="register-page">
+      <div class="header">
+        <h1>REGISTER</h1>
+      </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            placeholder="Enter First Name"
+            formControlName="firstName"
+            required
+            name="firstName"
+            autocomplete="on"
+          />
+        </mat-form-field>
+        <label class="err" [ngClass]="registerForm.controls['firstName'].hasError('required') ? 'err' : 'succes'">
+          <i class="material-icons">
+            {{ registerForm.controls['firstName'].hasError('required')  ? 'cancel' :
+            'check_circle' }}
+          </i>
+          First Name Is required
+        </label>
+
+        <mat-form-field appearance="fill">
+          <mat-label>LastName</mat-label>
+          <input
+            matInput
+            placeholder="Enter LastName"
+            formControlName="lastName"
+            required
+            name="lastName"
+            autocomplete="on"
+          />
+        </mat-form-field>
+        <label class="err" [ngClass]="registerForm.controls['lastName'].hasError('required') ? 'err' : 'succes'">
+          <i class="material-icons">
+            {{ registerForm.controls['lastName'].hasError('required') ? 'cancel' :
+            'check_circle' }}
+          </i>
+          LastName Is required
+        </label>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            placeholder="Enter username"
+            formControlName="username"
+            required
+            name="username"
+            autocomplete="on"
+          />
+        </mat-form-field>
+        <label class="err" [ngClass]="registerForm.controls['username'].hasError('required') ? 'err' : 'succes'">
+          <i class="material-icons">
+            {{ registerForm.controls['username'].hasError('required') ? 'cancel' :
+            'check_circle' }}
+          </i>
+          Username Is required
+        </label>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Enter password"
+            formControlName="password"
+            required
+            name="password"
+            autocomplete="on"
+          />
+        </mat-form-field>
+        <label class="err" [ngClass]="registerForm.controls['password'].hasError('required') || registerForm.controls['password'].hasError('minlength')  ? 'err' : 'succes'">
+          <i class="material-icons">
+            {{ registerForm.controls['password'].hasError('required') ||
+            registerForm.controls['password'].hasError('minlength') ? 'cancel' :
+            'check_circle' }}
+          </i>
+          Password must have at least 6 characters
+        </label>
+
+        <label class="err" [ngClass]="registerForm.controls['password'].hasError('required') || registerForm.controls['password'].hasError('hasNumber')  ? 'err' : 'succes'">
+          <i class="material-icons">
+            {{ registerForm.controls['password'].hasError('required') ||
+            registerForm.controls['password'].hasError('hasNumber') ? 'cancel' :
+            'check_circle' }}
+          </i>
+          Password must have at least a number!
+        </label>
+
+        <label class="err" [ngClass]="registerForm.controls['password'].hasError('required') || registerForm.controls['password'].hasError('hasCapitalCase')  ? 'err' : 'succes'">
+    <i class="material-icons">
+      {{ registerForm.controls['password'].hasError('required') ||
+      registerForm.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+      'check_circle' }}
+    </i>
+    Password must contain at least 1 in Capital Case!
+  </label>
+
+  <label class="err" [ngClass]="registerForm.controls['password'].hasError('required') || registerForm.controls['password'].hasError('hasSmallCase')  ? 'err' : 'succes'">
+  <i class="material-icons">
+    {{ registerForm.controls['password'].hasError('required') ||
+    registerForm.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+    'check_circle' }}
+  </i>
+  Password must contain at least 1 Letter in Small Case!
+  </label>
+
+  <label
+    class="err"
+    [ngClass]="registerForm.controls['password'].hasError('required') || registerForm.controls['password'].hasError('hasSpecialCharacters') ? 'err' : 'succes'"
+  >
+    <i class="material-icons">
+      {{ registerForm.controls['password'].hasError('required') ||
+      registerForm.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
+      'check_circle' }}
+    </i>
+    Password must contain at least 1 Special Character!
+  </label>
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm Password</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Confirm password"
+            formControlName="confirmPassword"
+            required
+            name="confirmPassword"
+            autocomplete="on"
+          />
+        </mat-form-field>
+        <label class="err" [ngClass]="registerForm.controls['confirmPassword'].hasError('NoPassswordMatch') || registerForm.controls['confirmPassword'].hasError('required')   ? 'err' : 'succes'">
+    <i class="material-icons">
+      {{ registerForm.controls['confirmPassword'].hasError('required') ||
+      registerForm.controls['confirmPassword'].hasError('NoPassswordMatch') ? 'cancel' :
+      'check_circle' }}
+    </i>
+    Passwords must be equal.
+  </label>
+        <a [routerLink]="'/login'">Already have an account? Login!</a>
+        <button mat-raised-button color="primary" type="submit">REGISTER</button>
+      </form>
+    </div>
+  </div>
+    

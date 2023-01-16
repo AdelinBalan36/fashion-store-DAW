@@ -1,0 +1,43 @@
+<br><br>
+<div class="searchingClothes">
+    <p class='message'>This are the clothes available</p>
+</div>
+<div class="add-remove-buttons ">
+
+    <mat-form-field class="example-full-width " appearance='fill'>
+        <mat-label>Search your clothes here</mat-label>
+        <input matInput [(ngModel)]="searchValue">
+        <mat-hint allign='start'><strong>Find it quicker!</strong> </mat-hint>
+    </mat-form-field>
+
+
+    <div>
+        <button mat-raised-button class="search" (click)=" search() ">SearchName</button>
+        <button mat-raised-button class="sort" (click)=" sortByPrice() ">SortByPrice</button>
+        <button mat-raised-button (click)="openModal() " class="demo-button ">
+          Add data
+        </button>
+        <button mat-raised-button [disabled]="!clothingItems.length " (click)="removeData() " class="demo-button ">
+          Remove data
+        </button>
+        <button mat-raised-button class="showData" (click)=" showData() ">Show Data</button>
+    </div>
+</div>
+
+
+<table *ngIf="clothingItems.length>0" class="newTable">
+    <tr>
+        <th> Name</th>
+        <th> Size</th>
+        <th> Gender</th>
+        <th> Brand</th>
+        <th> Price</th>
+    </tr>
+    <tr *ngFor="let tr of clothingItems" onlick="SomeDeletFunction()">
+        <td>{{tr.name}}</td>
+        <td>{{tr.size}}</td>
+        <td>{{genderList[tr.gender]}}</td>
+        <td>{{tr.brand}}</td>
+        <td>{{tr.price | currency: "EUR"}}</td>
+
+</table><br><br><br><br>

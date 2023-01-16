@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Add your clothing item to be selled</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Size</mat-label>
+            <input matInput formControlName="size">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Brand</mat-label>
+            <input matInput formControlName="brand">
+            <mat-error *ngIf="clothingItemBrand?.hasError('error-404')">This name is not valid</mat-error>
+            <mat-error *ngIf="clothingItemBrand?.hasError('required')">This field is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option value="0 ">M</mat-option>
+                <mat-option value="1 ">F</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Price</mat-label>
+            <input matInput formControlName="price" type="number">
+            <mat-error *ngIf="clothingItemPrice?.hasError('tooExpensive')">This is too expensive!!</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button>Cancel</button>
+    <button mat-button cdkFocusInitial (click)="addClothItem() ">Admit</button>
+
+</div>
